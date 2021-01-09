@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Components
+import { AppNavComponent } from './components/app-nav/app-nav.component';
+
 // Store
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
@@ -13,7 +16,8 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppNavComponent
   ],
   imports: [
     BrowserModule,
