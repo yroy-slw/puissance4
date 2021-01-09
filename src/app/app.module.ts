@@ -14,6 +14,9 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
+// States
+import { ColorModeState } from './common/store/states/colorMode.state';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgxsModule.forRoot(),
+    NgxsModule.forRoot([ColorModeState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot()
   ],

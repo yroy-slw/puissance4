@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ColorModeService } from '../../common/services/colorMode.service';
-// import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-nav',
@@ -9,8 +8,17 @@ import { ColorModeService } from '../../common/services/colorMode.service';
   styleUrls: ['./app-nav.component.scss'],
 })
 export class AppNavComponent implements OnInit {
-  constructor() {}
+  title = 'connect4';
+  public $isDarkMode: Observable<boolean>;
+  
+  constructor(
+    private colorModeService: ColorModeService,
+  ) {}
 
   ngOnInit(): void {
+  }
+
+  public toggleDarkMode(checked: boolean): void {
+    this.colorModeService.setDarkMode(checked);
   }
 }
