@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ColorModeService } from '../../common/services/colorMode.service';
+import FunctionalRules from '../../common/functionalRules';
 
 @Component({
   selector: 'app-nav',
@@ -8,6 +9,7 @@ import { ColorModeService } from '../../common/services/colorMode.service';
   styleUrls: ['./app-nav.component.scss'],
 })
 export class AppNavComponent implements OnInit {
+  public navLabels = FunctionalRules;
   title = 'connect4';
   public $isDarkMode: Observable<boolean>;
   

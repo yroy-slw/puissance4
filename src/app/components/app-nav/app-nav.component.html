@@ -1,5 +1,5 @@
-<mat-toolbar color="primary">
-  {{ title }}
+<mat-toolbar class="nav" color="primary">
+  <h1>{{ navLabels.APP_TITLE }}</h1>
   <mat-slide-toggle 
     [checked]="$isDarkMode | async" 
     (change)="toggleDarkMode($event.checked)">

@@ -2,7 +2,7 @@
   <div 
     class="game__container" 
     *ngFor="let row of box; let i= index;">
-    <div 
+    <div
       class="game__box" 
       *ngFor="let col of row; let j=index;">
       <div 
@@ -13,14 +13,18 @@
     </div>
   </div>
   <div class="game__controls">
-    <h2 
-      class="game__monitor" 
-      id="monitor">{{playerone_turn}}</h2>
-    <button 
-      mat-mini-fab  
-      aria-label="Example icon button with a home icon" 
-      (click)="newGame()">
-      <mat-icon>loop</mat-icon>
-    </button>
+    <mat-card>
+      <mat-card-header class="game__card">
+        <mat-card-title class="game__monitor" id="monitor">{{playerone_turn}}</mat-card-title>
+        <ng-container *ngIf="endGame">
+          <button 
+            mat-mini-fab  
+            aria-label="Example icon button with a home icon" 
+            (click)="newGame()">
+            <mat-icon>loop</mat-icon>
+          </button>
+        </ng-container>
+      </mat-card-header>
+    </mat-card>
   </div>
 </section>

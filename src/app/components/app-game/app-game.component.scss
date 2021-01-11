@@ -1,3 +1,12 @@
+:host {
+    width: 100%;
+    height: calc(100vh - 65px);
+    display: flex;
+    align-items: center;
+    margin-top: 1vh;
+    overflow: scroll;
+}
+
 .game {
     width: 100%;
     &__container {
@@ -6,31 +15,48 @@
         justify-content: center;
     }
     &__box {
-        background: var(--gameBoard);
+        background: var(--gameBoardBackground);
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 1vw;
+        @media (max-width: 640px) {
+            padding: 2vw;
+        }
     }
     &__token {
         cursor: pointer;
         height: 4vw;
         width: 4vw;
-        background-color: white;
+        background: var(--tokenBackground);
         border-radius: 50%;
-        display: inline-block;
         border-style: solid;
         border-color:transparent;
-    }
-    &__monitor {
-
+        &--move {
+            background: var(--tokenBackground);
+        }
+        &--red {
+            background: red;
+        }
+        &--yellow {
+            background: yellow;
+        }
+        @media (max-width: 768px) {
+            height: 7vw;
+            width: 7vw;
+        }
     }
     &__controls {
         width: 100%;
         display: flex;
         justify-content: center;
+        margin-top: 3vh;
     }
-    &__restart {
-
+    &__card {
+        display: flex;
+        align-items: center;
+    }
+    &__monitor {
+        margin-bottom: 0 !important;
     }
 }

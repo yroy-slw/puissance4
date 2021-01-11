@@ -1,5 +1,3 @@
-import { ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
 import FunctionalRules from '../../common/functionalRules';
 import {
   Component
@@ -13,14 +11,15 @@ import {
 
 export class AppGameComponent {
   public game_labels = FunctionalRules;
+  public endGame: boolean = false;
   public readonly playerone_turn = this.game_labels.GAME_STATES.TURN_LABEL + this.game_labels.PLAYERS.PLAYER1;
   private readonly playertwo_turn = this.game_labels.GAME_STATES.TURN_LABEL + this.game_labels.PLAYERS.PLAYER2;
   private readonly playerone_win = this.game_labels.PLAYERS.PLAYER1 + this.game_labels.GAME_STATES.WIN_LABEL;
   private readonly playertwo_win = this.game_labels.PLAYERS.PLAYER2 + this.game_labels.GAME_STATES.WIN_LABEL;
 
-  private playerOne: string = "red";
-  private playerTwo: string = "blue";
-  private turn: string = "red";
+  private playerOne: string = "game__token--red";
+  private playerTwo: string = "game__token--yellow";
+  private turn: string = this.playerOne;
   private tap: number = 1;
   private checker: number = 1;
   private chosen: any;
@@ -50,13 +49,12 @@ export class AppGameComponent {
     [0, 0, 0, 0, 0, 0, 0]
   ];
 
-  private monitor: HTMLElement = document.getElementById('monitor') !;
-
-  clickedToken(event: any, i: number, j: number) {
+  public clickedToken(event: any, i: number, j: number) {
     if (this.tap == 0) return;
+
     for (let a = 0; a < 6; a++) {
       if (this.box2[5 - a][j] == 0) {
-        this.turn == "red" ? this.box2[5 - a][j] = 1 : this.box2[5 - a][j] = 2;
+        this.turn == this.playerOne ? this.box2[5 - a][j] = 1 : this.box2[5 - a][j] = 2;
         this.chosen = this.box[5 - a][j];
         this.rowanimator = 0;
         this.tap = 0;
@@ -70,14 +68,15 @@ export class AppGameComponent {
 
     this.animator = this.box[this.rowanimator][j];
 
-    document.getElementById(this.animator) !.style.backgroundColor = this.turn;
+    document.getElementById(this.animator) !.classList.add(this.turn);
 
     setTimeout(() => {
-      document.getElementById(this.animator) !.style.backgroundColor = "white";
+      document.getElementById(this.animator) !.classList.add("game__token--move");
+      document.getElementById(this.animator) !.classList.remove(this.turn);
       this.rowanimator++;
       if (this.rowanimator == (6 - a)) {
-
-        document.getElementById(this.chosen) !.style.backgroundColor = this.turn;
+        document.getElementById(this.chosen) !.classList.remove("game__token--move");
+        document.getElementById(this.chosen) !.classList.add(this.turn);
         if (this.turn == this.playerOne) {
           this.turn = this.playerTwo;
           this.checker = 1;
@@ -157,19 +156,20 @@ export class AppGameComponent {
           return;
         } else {
           this.tap = 1;
-          this.turn == "blue" ? document.getElementById("monitor") !.innerHTML = this.playertwo_turn : document.getElementById("monitor") !.innerHTML = this.playerone_turn;
+          this.turn == this.playerTwo ? document.getElementById("monitor") !.innerHTML = this.playertwo_turn : document.getElementById("monitor") !.innerHTML = this.playerone_turn;
           this.tide();
         }
       }
     }
   }
 
-  private winner() {
-    if (this.turn == "blue") {
-      this.turn = "red";
+  public winner() {
+    this.endGame = !this.endGame;
+    if (this.turn == this.playerTwo) {
+      this.turn = this.playerOne;
       document.getElementById("monitor") !.innerHTML = this.playerone_win;
     } else {
-      this.turn = "blue";
+      this.turn = "game__token--yellow";
       document.getElementById("monitor") !.innerHTML = this.playertwo_win;
     }
     let timer = 200;
@@ -181,13 +181,13 @@ export class AppGameComponent {
         document.getElementById(this.winnerSlot4) !.style.backgroundColor = "white";
         setTimeout(() => {
           document.getElementById(this.winnerSlot1) !.style.backgroundColor = this.turn;
-          document.getElementById(this.winnerSlot1) !.style.borderColor = "yellow";
+          document.getElementById(this.winnerSlot1) !.style.borderColor = "red";
           document.getElementById(this.winnerSlot2) !.style.backgroundColor = this.turn;
-          document.getElementById(this.winnerSlot2) !.style.borderColor = "yellow";
+          document.getElementById(this.winnerSlot2) !.style.borderColor = "red";
           document.getElementById(this.winnerSlot3) !.style.backgroundColor = this.turn;
-          document.getElementById(this.winnerSlot3) !.style.borderColor = "yellow";
+          document.getElementById(this.winnerSlot3) !.style.borderColor = "red";
           document.getElementById(this.winnerSlot4) !.style.backgroundColor = this.turn;
-          document.getElementById(this.winnerSlot4) !.style.borderColor = "yellow";
+          document.getElementById(this.winnerSlot4) !.style.borderColor = "red";
         }, 100);
       }, timer);
       timer = timer + 200;
@@ -201,15 +201,17 @@ export class AppGameComponent {
       if (this.box2[0][j] != 0) counter++;
     }
     if (counter == 7) {
+      this.endGame = !this.endGame;
       this.tap = 0;
       document.getElementById("monitor") !.innerHTML = this.game_labels.GAME_STATES.NULL_LABEL;
     }
   }
 
   public newGame() {
+    this.endGame = false;
     this.tap = 1;
     this.checker = 1;
-    this.turn = "red";
+    this.turn = this.playerOne;
     this.box2 = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
@@ -221,8 +223,10 @@ export class AppGameComponent {
     for (let i = 0; i < 6; i++) {
       for (let j = 0; j < 7; j++) {
         this.reset = this.box[i][j];
-        document.getElementById(this.reset) !.style.backgroundColor = "white";
+        document.getElementById(this.reset) !.classList.remove("game__token--red");
+        document.getElementById(this.reset) !.classList.remove("game__token--yellow");
         document.getElementById(this.reset) !.style.borderColor = "transparent";
+        document.getElementById(this.reset) !.style.backgroundColor = "";
       }
     }
     document.getElementById("monitor") !.innerHTML = this.playerone_turn;
