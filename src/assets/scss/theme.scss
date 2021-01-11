@@ -1,7 +1,6 @@
 @import '~@angular/material/theming';
 
 @include mat-core();
-
 $primary: mat-palette($mat-light-blue, A400);
 $accent: mat-palette($mat-pink, A200, A100, A400);
 $warn: mat-palette($mat-red);
@@ -17,4 +16,12 @@ $theme: mat-light-theme($primary, $accent, $warn);
   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
   @include angular-material-theme($dark-theme);
+}
+
+// Game Colors
+:root {
+  --gameBoard: red;
+  .dark-theme {
+    --gameBoard: pink;
+  }
 }
