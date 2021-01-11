@@ -1,6 +1,8 @@
 # Puissance4
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
+[Demo](https://www.google.com)
+
+This project was generated with [Angular CLI](https://yroy-slw.github.io/puissance4/puissance4/)
 
 ## Development server
 
