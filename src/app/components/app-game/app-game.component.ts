@@ -175,19 +175,23 @@ export class AppGameComponent {
     let timer = 200;
     for (let i = 0; i < 5; i++) {
       setTimeout(() => {
-        document.getElementById(this.winnerSlot1) !.style.backgroundColor = "white";
-        document.getElementById(this.winnerSlot2) !.style.backgroundColor = "white";
-        document.getElementById(this.winnerSlot3) !.style.backgroundColor = "white";
-        document.getElementById(this.winnerSlot4) !.style.backgroundColor = "white";
+        document.getElementById(this.winnerSlot1) !.classList.add("game__token--white");
+        document.getElementById(this.winnerSlot2) !.classList.add("game__token--white");
+        document.getElementById(this.winnerSlot3) !.classList.add("game__token--white");
+        document.getElementById(this.winnerSlot4) !.classList.add("game__token--white");
         setTimeout(() => {
-          document.getElementById(this.winnerSlot1) !.style.backgroundColor = this.turn;
-          document.getElementById(this.winnerSlot1) !.style.borderColor = "red";
-          document.getElementById(this.winnerSlot2) !.style.backgroundColor = this.turn;
-          document.getElementById(this.winnerSlot2) !.style.borderColor = "red";
-          document.getElementById(this.winnerSlot3) !.style.backgroundColor = this.turn;
-          document.getElementById(this.winnerSlot3) !.style.borderColor = "red";
-          document.getElementById(this.winnerSlot4) !.style.backgroundColor = this.turn;
-          document.getElementById(this.winnerSlot4) !.style.borderColor = "red";
+          document.getElementById(this.winnerSlot1) !.classList.remove("game__token--white");
+          document.getElementById(this.winnerSlot2) !.classList.remove("game__token--white");
+          document.getElementById(this.winnerSlot3) !.classList.remove("game__token--white");
+          document.getElementById(this.winnerSlot4) !.classList.remove("game__token--white");
+          document.getElementById(this.winnerSlot1) !.classList.add(this.turn);
+          document.getElementById(this.winnerSlot1) !.style.borderColor = "gold";
+          document.getElementById(this.winnerSlot2) !.classList.add(this.turn);
+          document.getElementById(this.winnerSlot2) !.style.borderColor = "gold";
+          document.getElementById(this.winnerSlot3) !.classList.add(this.turn);
+          document.getElementById(this.winnerSlot3) !.style.borderColor = "gold";
+          document.getElementById(this.winnerSlot4) !.classList.add(this.turn);
+          document.getElementById(this.winnerSlot4) !.style.borderColor = "gold";
         }, 100);
       }, timer);
       timer = timer + 200;

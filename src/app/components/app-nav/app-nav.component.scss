@@ -1,4 +1,10 @@
 .nav {
     display: flex;
     justify-content: space-between;
+    &__title {
+        color: var(--color);
+    }
+    &__icon {
+        color: var(--color);
+    }
 }

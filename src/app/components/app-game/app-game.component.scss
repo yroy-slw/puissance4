@@ -1,10 +1,8 @@
 :host {
     width: 100%;
-    height: calc(100vh - 65px);
+    height: calc(100vh - 64px);
     display: flex;
     align-items: center;
-    margin-top: 1vh;
-    overflow: scroll;
 }
 
 .game {
@@ -30,8 +28,7 @@
         width: 4vw;
         background: var(--tokenBackground);
         border-radius: 50%;
-        border-style: solid;
-        border-color:transparent;
+        border: .5vw solid transparent;
         &--move {
             background: var(--tokenBackground);
         }
@@ -40,6 +37,9 @@
         }
         &--yellow {
             background: yellow;
+        }
+        &--white {
+            background: white;
         }
         @media (max-width: 768px) {
             height: 7vw;

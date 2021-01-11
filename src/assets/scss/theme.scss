@@ -22,8 +22,10 @@ $theme: mat-light-theme($primary, $accent, $warn);
 :root {
   --gameBoardBackground: #00b0ff;
   --tokenBackground: #fafafa;
+  --color: #fafafa;
   .dark-theme {
     --gameBoardBackground: #ff9100;
     --tokenBackground: #303030;
+    --color: #000000;
   }
 }

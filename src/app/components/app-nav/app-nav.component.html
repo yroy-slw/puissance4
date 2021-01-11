@@ -1,8 +1,9 @@
 <mat-toolbar class="nav" color="primary">
-  <h1>{{ navLabels.APP_TITLE }}</h1>
+  <mat-icon class="nav__icon">gamepad</mat-icon>
+  <h1 class="nav__title">{{ navLabels.APP_TITLE }}</h1>
   <mat-slide-toggle 
     [checked]="$isDarkMode | async" 
     (change)="toggleDarkMode($event.checked)">
-    <mat-icon>brightness_medium</mat-icon>
+    <mat-icon class="nav__icon">brightness_medium</mat-icon>
   </mat-slide-toggle>
 </mat-toolbar>
