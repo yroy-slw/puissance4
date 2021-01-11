@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Components
 import { AppNavComponent } from './components/app-nav/app-nav.component';
+import { AppGameComponent } from './components/app-game/app-game.component';
 
 // Store
 import { NgxsModule } from '@ngxs/store';
@@ -20,7 +21,8 @@ import { ColorModeState } from './common/store/states/colorMode.state';
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavComponent
+    AppNavComponent,
+    AppGameComponent
   ],
   imports: [
     BrowserModule,
