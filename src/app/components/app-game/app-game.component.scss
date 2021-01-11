@@ -1,0 +1,36 @@
+.game {
+    width: 100%;
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__box {
+        background: var(--gameBoard);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1vw;
+    }
+    &__token {
+        cursor: pointer;
+        height: 4vw;
+        width: 4vw;
+        background-color: white;
+        border-radius: 50%;
+        display: inline-block;
+        border-style: solid;
+        border-color:transparent;
+    }
+    &__monitor {
+
+    }
+    &__controls {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    &__restart {
+
+    }
+}

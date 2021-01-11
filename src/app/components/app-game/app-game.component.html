@@ -1,0 +1,26 @@
+<section class="game">
+  <div 
+    class="game__container" 
+    *ngFor="let row of box; let i= index;">
+    <div 
+      class="game__box" 
+      *ngFor="let col of row; let j=index;">
+      <div 
+        class="game__token" 
+        [id]="box[i][j]" 
+        #box[i][j] 
+        (click)="clickedToken($event,i,j)"></div>
+    </div>
+  </div>
+  <div class="game__controls">
+    <h2 
+      class="game__monitor" 
+      id="monitor">{{playerone_turn}}</h2>
+    <button 
+      mat-mini-fab  
+      aria-label="Example icon button with a home icon" 
+      (click)="newGame()">
+      <mat-icon>loop</mat-icon>
+    </button>
+  </div>
+</section>
