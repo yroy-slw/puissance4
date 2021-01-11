@@ -1,6 +1,6 @@
 # Puissance4
 
-[Demo](https://www.google.com)
+[Demo](https://yroy-slw.github.io/puissance4/puissance4/)
 
 This project was generated with [Angular CLI](https://yroy-slw.github.io/puissance4/puissance4/)
 
